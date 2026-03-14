@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 
 
 class TechnicalInfo(BaseModel):
@@ -26,3 +26,12 @@ class Product(BaseModel):
     remaining_quantity: int
     technical_info: TechnicalInfo
     url: str
+
+    @field_validator("remaining_quantity", mode="before")
+    def parse_quantity(cls, v):
+        quantity = str(v).split(" ")[1] if " " in str(v) else str(v)
+        return int(quantity.replace("+", "").strip())
+
+    @field_validator("price", mode="before")
+    def parse_price(cls, v):
+        return float(str(v).split("€")[0].replace(",", ".").strip())
