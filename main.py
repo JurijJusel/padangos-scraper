@@ -1,26 +1,30 @@
-import requests
-from bs4 import BeautifulSoup
-from constants import URL_123 as URL
 from rich import print
+from config_url_builder import (BASE_URL_123, PREMIUM_TIRES_BRANDS, SEASONS,
+                                DIMENSION, FEATURES, TIRE_SELECTIONS)
+from utils.url_builder import build_full_url_123
+from crawlers.scrap_tires_123 import (get_all_pages_and_products_links_123,
+                                      scrape_product_123)
+from utils.file import write_data_to_json_file
+from constants import JSON_FILE_PATH_123
+from utils.http_get_soup import get_soup
 
 
-def get_soup(page_url):
-    """
-    Fetches and parses a webpage into a BeautifulSoup object.
-    Args:
-        page_url (str): The full URL of the page to fetch.
-    Returns:
-        BeautifulSoup: Parsed HTML content of the page.
-    """
-    req = requests.get(page_url, headers={"User-Agent":"Mozilla/5.0"})
-    print(req.status_code)
-    req.raise_for_status()
-    soup = BeautifulSoup(req.text, "html.parser")
-    return soup
+def main():
+    base_url = build_full_url_123(BASE_URL_123, DIMENSION, PREMIUM_TIRES_BRANDS,
+                                  SEASONS, FEATURES, TIRE_SELECTIONS)
+
+    print(f"Scraping BASE_URL: {base_url}")
+
+    product_urls_list = get_all_pages_and_products_links_123(base_url)
+    print(f"Found {len(product_urls_list)} product URLs to scrape.")
+
+    for product_url in product_urls_list[:10]:  # Limit to first 5 products
+        print(f"Scraping product url: {product_url}")
+        product_soup = get_soup(product_url)
+        product = scrape_product_123(product_soup, product_url)
+        print(write_data_to_json_file(product.model_dump(), JSON_FILE_PATH_123))
 
 
 if __name__ == "__main__":
-    url = URL
-    soup  = get_soup(url)
-    print(soup.title.text)
-    #print(soup)
+    main()
+    print("DONE!")

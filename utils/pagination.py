@@ -1,0 +1,15 @@
+def is_last_page(soup) -> bool:
+    """
+    Checks if the current page is the last page.
+    Returns True if there is only one page or if the current page is the last page.
+    Args:
+        soup (BeautifulSoup): Parsed HTML content of the page.
+    Returns:
+        bool: True if the current page is the last page, False otherwise.
+    """
+    pagination = soup.find("ul", class_="pagination")
+    if not pagination:
+        return True
+
+    last_li = pagination.find_all("li")[-1]
+    return bool(last_li.find("span"))

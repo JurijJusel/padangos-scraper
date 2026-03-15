@@ -1,0 +1,74 @@
+[
+    {
+        "brand": "Hankook",
+        "model": "Ventus S1 Evo3 (K127)",
+        "product_class": "Vidutinės klasės vasarinės padangos",
+        "price": 142.0,
+        "wet_grip": "A",
+        "fuel_effect": "C",
+        "noise": "B 72 dB",
+        "remaining_quantity": 8,
+        "technical_info": {
+            "width": 245,
+            "height": 40,
+            "diameter": 19,
+            "product_code": "2113502",
+            "product_season": "vasarinės",
+            "load_index": 98,
+            "speed_index": "Y",
+            "reinforced": "Taip",
+            "runflat": "Ne",
+            "transport_type": "Lengvasis automobilis",
+            "construction_type": "R"
+        },
+        "url": "https://padangos123.lt/hankook-s1-evo-3-k-127/2113502/"
+    },
+    {
+        "brand": "Hankook",
+        "model": "Ventus Evo (K137)",
+        "product_class": "Vidutinės klasės vasarinės padangos",
+        "price": 155.0,
+        "wet_grip": "A",
+        "fuel_effect": "C",
+        "noise": "B 70 dB",
+        "remaining_quantity": 8,
+        "technical_info": {
+            "width": 245,
+            "height": 40,
+            "diameter": 19,
+            "product_code": "2268209",
+            "product_season": "vasarinės",
+            "load_index": 98,
+            "speed_index": "Y",
+            "reinforced": "Taip",
+            "runflat": "Ne",
+            "transport_type": "Lengvasis automobilis",
+            "construction_type": "R"
+        },
+        "url": "https://padangos123.lt/hankook-ventus-evo-k137/2268209/"
+    },
+    {
+        "brand": "Hankook",
+        "model": "Ventus S1 Evo3 (K127)",
+        "product_class": "Vidutinės klasės vasarinės padangos",
+        "price": 187.0,
+        "wet_grip": "A",
+        "fuel_effect": "C",
+        "noise": "B 72 dB",
+        "remaining_quantity": 5,
+        "technical_info": {
+            "width": 245,
+            "height": 40,
+            "diameter": 19,
+            "product_code": "2221371",
+            "product_season": "vasarinės",
+            "load_index": 98,
+            "speed_index": "Y",
+            "reinforced": "Taip",
+            "runflat": "Taip",
+            "transport_type": "Lengvasis automobilis",
+            "construction_type": "R"
+        },
+        "url": "https://padangos123.lt/hankook-s1-evo-3-k-127/2221371/"
+    }
+]
