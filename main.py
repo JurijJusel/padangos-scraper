@@ -1,14 +1,18 @@
 from rich import print
-from constants import BASE_URL_123, PREMIUM_TIRES_BRANDS, SEASONS, DIMENSION
+from config_url_builder import (BASE_URL_123, PREMIUM_TIRES_BRANDS, SEASONS,
+                                DIMENSION, FEATURES, TIRE_SELECTIONS)
 from utils.url_builder import build_full_url_123
-from crawlers.scrap_tires_123 import get_all_pages_and_products_links_123, scrape_product_123
+from crawlers.scrap_tires_123 import (get_all_pages_and_products_links_123,
+                                      scrape_product_123)
 from utils.file import write_data_to_json_file
 from constants import JSON_FILE_PATH_123
 from utils.http_get_soup import get_soup
 
 
 def main():
-    base_url = build_full_url_123(BASE_URL_123, DIMENSION, PREMIUM_TIRES_BRANDS, SEASONS)
+    base_url = build_full_url_123(BASE_URL_123, DIMENSION, PREMIUM_TIRES_BRANDS,
+                                  SEASONS, FEATURES, TIRE_SELECTIONS)
+
     print(f"Scraping BASE_URL: {base_url}")
 
     product_urls_list = get_all_pages_and_products_links_123(base_url)

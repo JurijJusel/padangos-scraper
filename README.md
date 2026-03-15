@@ -31,7 +31,14 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-3. Install dependencies:
+3. Install uv and dependencies:
+
+"https://docs.astral.sh/uv/getting-started/installation/#standalone-installer"
+
+```bash
+pip install uv
+```
+
 ```bash
 uv sync
 # or with pip:
@@ -67,11 +74,13 @@ padangos-scraper/
 
 ## Configuration
 
-Modify `constants.py` to adjust:
+Modify `config_url_builder.py` to adjust:
 - Target URLs
 - Tire brands to scrape
-- Seasons and dimensions
-- Output file paths
+- Seasons
+- Dimensions
+- Tire features and selections
+
 
 ## Dependencies
 
@@ -81,6 +90,4 @@ Modify `constants.py` to adjust:
 - `rich` - Rich console output
 
 ## License
-
-This project is licensed under the terms specified in the LICENSE file.
-
+This project is licensed under the MIT License.
