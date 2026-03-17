@@ -6,7 +6,7 @@ DIMENSION = "245-45-R18"
 #DIMENSION = "245-40-R19"
 
 # Dictionary mapping tire brands.
-PREMIUM_TIRES_BRANDS = {
+TIRES_BRANDS = {
     #"michelin": 1,
     #"bridgestone": 2,
     #"continental": 3,
@@ -18,22 +18,30 @@ PREMIUM_TIRES_BRANDS = {
 
 # Dictionary mapping season names.
 SEASONS = {
-    "vasarinės": 4,
+    #"vasarinės": 4,
     #"universalios": 5,
-    #"žieminės": 6,
+    "žieminės": 6,
 }
 
 # Dictionary mapping tire features.
 FEATURES = {
     #"runflat": "runflat",
-    "reinforced": "reinforced",
-    "rim_protection": "rim_protection",
+    #"reinforced": "reinforced",
+    #"rim_protection": "rim_protection",
 }
 
 # Dictionary mapping tire selections.
 TIRE_SELECTIONS = {
-    "studded": "studded",
-    # "soft_mixture": "soft_mixture",
-    "medium_hardness": "medium_hardness",
-    # "sporty": "sporty",
+    #"studded": "studded",
+    #"soft_mixture": "soft_mixture",
+    #"medium_hardness": "medium_hardness",
+    #"sporty": "sporty",
+}
+
+FILTER_PARAMS = {
+    "dimension": DIMENSION,
+    "brands": TIRES_BRANDS,
+    "seasons": SEASONS,
+    "features": FEATURES,
+    "tire_selections": TIRE_SELECTIONS,
 }
