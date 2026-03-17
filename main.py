@@ -1,7 +1,6 @@
 from rich import print
-from config_url_builder import (BASE_URL_123, PREMIUM_TIRES_BRANDS, SEASONS,
-                                DIMENSION, FEATURES, TIRE_SELECTIONS)
-from utils.url_builder import build_full_url_123
+from core.config_123 import (BASE_URL_123, FILTER_PARAMS)
+from utils.url_builder_123 import build_full_url_123
 from crawlers.scrap_tires_123 import (get_all_pages_and_products_links_123,
                                       scrape_product_123)
 from utils.file import write_data_to_json_file
@@ -10,15 +9,13 @@ from utils.http_get_soup import get_soup
 
 
 def main():
-    base_url = build_full_url_123(BASE_URL_123, DIMENSION, PREMIUM_TIRES_BRANDS,
-                                  SEASONS, FEATURES, TIRE_SELECTIONS)
-
+    base_url = build_full_url_123(BASE_URL_123, FILTER_PARAMS)
     print(f"Scraping BASE_URL: {base_url}")
 
     product_urls_list = get_all_pages_and_products_links_123(base_url)
     print(f"Found {len(product_urls_list)} product URLs to scrape.")
 
-    for product_url in product_urls_list[:10]:  # Limit to first 5 products
+    for product_url in product_urls_list[:10]:
         print(f"Scraping product url: {product_url}")
         product_soup = get_soup(product_url)
         product = scrape_product_123(product_soup, product_url)
