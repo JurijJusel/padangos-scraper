@@ -1,6 +1,6 @@
 from rich import print
-from core.config_123 import (BASE_URL_123, FILTER_PARAMS)
-from utils.url_builder_123 import build_full_url_123
+from core_123.config_123 import (BASE_URL_123, FILTER_PARAMS)
+from core_123.url_builder_123 import build_full_url_123
 from crawlers.scrap_tires_123 import (get_all_pages_and_products_links_123,
                                       scrape_product_123)
 from utils.file import write_data_to_json_file
