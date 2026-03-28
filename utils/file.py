@@ -52,3 +52,30 @@ def write_data_to_json_file(data: list | dict, json_file_path: str) -> str:
     except Exception as e:
         print(f"An error occurred: {e}")
         raise
+
+
+def write_info_to_jsonl(data: dict, json_file_path: str) -> str:
+    """
+    Writes info data to a JSON file.
+    Overwrites the file if it already exists.
+    Args:
+        data (dict): The info data to write to the JSON file.
+        json_file_path (str): The path to the JSON file.
+    Returns:
+        str: A message indicating success.
+    Raises:
+        Exception: If an error occurs while writing to the file.
+    Example:
+        >>> write_info_to_json({"base_url": "https://..."}, "data/scrape_info.jsonl")
+        "Info saved to 'data/scrape_info.json'."
+    """
+    path = Path(json_file_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    try:
+        with open(path, 'a', encoding='utf-8') as file:
+            file.write(json.dumps(data, ensure_ascii=False) + "\n")
+        return f"Info saved to '{json_file_path}'."
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        raise
