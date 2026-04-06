@@ -34,7 +34,7 @@ def build_full_url_123(base_url: str, filter_params: dict) -> str:
                 "seasons" (dict): Seasons. Example: {"vasarinės": 4}
     Returns:
         str: The full URL.
-            Example: "https://padangosplius.lt/padangos/245-45-R18/?filter=fmod_2:4;brands:2"
+            Example: "https://padangos123.lt/padangos/245-45-R18/?filter=fmod_2:4;brands:2"
     """
     filter_str = build_filter_123(
         seasons=filter_params["seasons"],
