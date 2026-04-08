@@ -34,7 +34,7 @@ def write_data_to_json_file(data: list | dict, json_file_path: str) -> str:
             new_data = [item for item in new_data if item["technical_info"]["product_code"] not in existing_codes]
 
             if not new_data:
-                return f"Data already exists in '{json_file_path}'. No new data to append."
+                return f"Data already exists in '{json_file_path}'."
 
             existing_data.extend(new_data)
             message = f"Data appended to existing file: '{json_file_path}'."

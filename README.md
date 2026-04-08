@@ -81,6 +81,59 @@ Modify `config_url_builder.py` to adjust:
 - Dimensions
 - Tire features and selections
 
+### Supabase Integration
+Scraped tire data is automatically saved to a Supabase (PostgreSQL) database.
+Database Schema
+Two tables are used:
+- tires_base — main product information:
+- technical_info — technical specifications:
+
+## Setup
+
+1.Create a project at supabase.com
+2. Create the tables `tires_base` and `technical_info` with the appropriate schema.
+
+tires_base (
+    id                 int8 (PRIMARY KEY GENERATED ALWAYS AS IDENTITY),
+    brand              TEXT NOT NULL,
+    model              TEXT NOT NULL,
+    product_class      TEXT,
+    price              NUMERIC,
+    wet_grip           TEXT,
+    fuel_effect        TEXT,
+    noise              TEXT,
+    remaining_quantity INT2,
+    url                TEXT
+);
+
+technical_info (
+    tires_id          int8 REFERENCES tires_base(id) foreign key,
+    width             INT2,
+    height            INT2,
+    diameter          INT2,
+    product_code      TEXT,
+    product_season    TEXT,
+    load_index        INT2,
+    speed_index       TEXT,
+    reinforced        TEXT,
+    runflat           TEXT,
+    transport_type    TEXT,
+    construction_type TEXT
+);
+
+3. Obtain your Supabase URL and API key from the project settings.
+4. Create a `.env` file in the project root with the following content:
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_api_key
+```
+
+How It Works
+Before inserting, the scraper checks if a tire with the same product_code
+already exists in technical_info
+If found, the insert is skipped to avoid duplicates
+If not found, data is inserted into both tires_base and technical_info tables
+
 
 ## Dependencies
 
@@ -88,6 +141,9 @@ Modify `config_url_builder.py` to adjust:
 - `requests` - HTTP client for web requests
 - `pydantic` - Data validation and modeling
 - `rich` - Rich console output
+- `supabase` - Supabase Python client
+- `python-dotenv` - Environment variable management
+
 
 ## License
 This project is licensed under the MIT License.
