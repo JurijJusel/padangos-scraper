@@ -1,6 +1,7 @@
 # Padangos Scraper
 
-A Python web scraper for extracting tire product information from e-commerce websites. Built with BeautifulSoup, Requests, and Pydantic for data modeling.
+A Python web scraper for extracting tire product information from e-commerce websites.
+Built with BeautifulSoup, Requests, and Pydantic for data modeling.
 
 ## Features
 
@@ -133,6 +134,51 @@ Before inserting, the scraper checks if a tire with the same product_code
 already exists in technical_info
 If found, the insert is skipped to avoid duplicates
 If not found, data is inserted into both tires_base and technical_info tables
+
+
+# Supabase Connection from VSCode (SQLTools)
+
+## Prerequisites
+Install these VSCode extensions:
+- `SQLTools`
+- `SQLTools PostgreSQL/Cockroach Driver` (driver.pg)
+
+## Getting Connection String from Supabase
+1. Go to your Supabase project
+2. Click the **Connect** button in the top centee of the dashboard
+3. A modal window will appear: **Connect to your project — Choose how you want to use Supabase**
+4. Select **Session Pooler** (recommended — Direct connection may be blocked by your ISP on port 5432)
+5. Copy the **Connection string** shown below the options — it looks like this:
+
+## Notes
+  - Use **Session Pooler** connection string — Direct connection (port 5432)
+    may be blocked by your ISP
+
+```
+postgresql://postgres.YOUR-PROJECT-ID:YOUR-PASSWORD@aws-0-eu-central-1.pooler.supabase.com:5432/postgres
+```
+
+6. Replace `YOUR-PASSWORD` with your actual database password
+ - This is the same password you entered when creating the Supabase project
+7. Replace `YOUR-PROJECT-ID` with your actual project ID
+ - Go ot Project Settings → General settings → Project ID to find your project ID
+
+## Setup in VSCode
+1. open SQL Tools → Press `Add New Connection`
+2. Select **PostgreSQL**
+3. Set **Connect using** → **Connection String**
+4. Paste the connection string from the previous step
+5. SSL settings:
+   - SSL: **Enabled**
+   - rejectUnauthorized: **unchecked**
+6. Use password → **Save as plaintext in settings**
+7. Click **Save Connection**
+
+## Viewing Data
+1. Click **SQLTools icon** (cylinder) in the left sidebar
+2. Expand your connection → **postgres → public → tables**
+3. You will see your tables: `tires_base` and `technical_info`
+4. Right-click on a table and select **Show Table Records** to run queries
 
 
 ## Dependencies
