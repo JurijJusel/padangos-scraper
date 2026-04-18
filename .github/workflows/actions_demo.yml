@@ -1,0 +1,11 @@
+name: GitHub Actions hello world demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  workflow_dispatch:        # leidzia paleisti ranka per GitHub UI
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, World! This is a GitHub Actions demo."
+      

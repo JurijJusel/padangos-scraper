@@ -1,16 +1,16 @@
 name: Padangos Scraper
 
 on:
-  schedule:
+  #schedule:
     #- cron: "1 8 * * 1-5"   # 10:00 Lietuvos laiku (UTC+2) 1-5 darbo dienomis (1-7)
     #- cron: "1 16 5 * 1-5"  # 18:00 Lietuvos laiku (UTC+2) 5 menesio diena, 1-5 darbo dienomis
     #- cron: "1 8 10 4 1-5"  # 10:00 Lietuvos laiku (UTC+2) 10 menesio diena (1-31),4 mienuo (1-12)
-    - cron: "1 16 * * *"     # 17:00 Lietuvos laiku (UTC+1) kasdien, 1-7 dienomis
+    #- cron: "1 18 * * *"     # 19:00 Lietuvos laiku (UTC+1) kasdien, 1-7 dienomis
   workflow_dispatch:        # leidzia paleisti ranka per GitHub UI
 
 
 concurrency:
-  group: ${{github.workflow}}
+  group: ${{ github.workflow }}
   cancel-in-progress: false  # laukia kol baigsis, nepradeda naujo
 
 
@@ -30,7 +30,7 @@ jobs:
 
       - name: Run scraper
         env:
-          SUPABASE_URL_PADANGOS: ${{secrets.SUPABASE_URL_PADANGOS}}
-          SUPABASE_API_KEY_PADANGOS: ${{secrets.SUPABASE_API_KEY_PADANGOS}}
+          SUPABASE_URL_PADANGOS: ${{ secrets.SUPABASE_URL_PADANGOS }}
+          SUPABASE_API_KEY_PADANGOS: ${{ secrets.SUPABASE_API_KEY_PADANGOS }}
         run: |
           uv run python main.py
