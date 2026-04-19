@@ -36,9 +36,9 @@ async def top_cheapest_command(update: Update, context: ContextTypes.DEFAULT_TYP
     su pavadinimu, dimensijomis, kaina ir url
     """
     client = get_supabase_client()
-    tires = get_cheapest_tires(client, limit=5)
+    tires = get_cheapest_tires(client, limit=10)
 
-    message = "🏆 Top 5 pigiausios padangos:\n\n"
+    message = "🏆 Top pigiausios padangos:\n\n"
 
     for i, tire in enumerate(tires, start=1):
         tech = tire["technical_info"]
@@ -59,9 +59,9 @@ async def top_expensive_command(update: Update, context: ContextTypes.DEFAULT_TY
     su pavadinimu, dimensijomis, kaina ir url
     """
     client = get_supabase_client()
-    tires = get_expensive_tires(client, limit=5)
+    tires = get_expensive_tires(client, limit=10)
 
-    message = "🏆 Top 5 brangiausios padangos:\n\n"
+    message = "🏆 Top brangiausios padangos:\n\n"
 
     for i, tire in enumerate(tires, start=1):
         tech = tire["technical_info"]
