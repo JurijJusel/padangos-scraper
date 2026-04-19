@@ -79,3 +79,53 @@ def insert_to_supabase_tire_if_not_exists(client, tire):
     ).execute()
 
     print(f"Written data to supabase, product_code: {product_code}")
+
+
+def get_cheapest_tires(client, limit: int = 5):
+    """
+    Get cheapest tires from Supabase with name, dimensions, price and url.
+
+    Args:
+        client: Supabase client instance.
+        limit (int): Number of tires to return. Default is 5.
+
+    Returns:
+        list: List of cheapest tires with name, dimensions, price and url.
+    """
+    response = (
+        client.table("tires_base")
+        .select(
+            "brand, model, price, url, "
+            "technical_info(width, height, diameter)"
+        )
+        .order("price", desc=False)
+        .limit(limit)
+        .execute()
+    )
+
+    return response.data
+
+
+def get_expensive_tires(client, limit: int = 5):
+    """
+    Get expensive tires from Supabase with name, dimensions, price and url.
+
+    Args:
+        client: Supabase client instance.
+        limit (int): Number of tires to return. Default is 5.
+
+    Returns:
+        list: List of expensive tires with name, dimensions, price and url.
+    """
+    response = (
+        client.table("tires_base")
+        .select(
+            "brand, model, price, url, "
+            "technical_info(width, height, diameter)"
+        )
+        .order("price", desc=True)
+        .limit(limit)
+        .execute()
+    )
+
+    return response.data
