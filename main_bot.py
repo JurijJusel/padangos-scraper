@@ -1,7 +1,9 @@
 import os
 from dotenv import load_dotenv
 from telegram import Update
-from handlers import ping_command, start_command
+from telegram_notif.handlers import (ping_command, start_command,
+                                    top_cheapest_command, top_expensive_command,
+                                    help_command)
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -27,6 +29,13 @@ def main():
     app.add_handler(MessageHandler(filters.Text("PING"), ping_command))
     #Command handler /ping
     app.add_handler(CommandHandler("ping", ping_command))
+
+    # Command handler /top_cheap
+    app.add_handler(CommandHandler("top_cheap", top_cheapest_command))
+    app.add_handler(CommandHandler("top_expensive", top_expensive_command))
+
+    # Command handler /help
+    app.add_handler(CommandHandler("help", help_command))
 
     # Run bot
     print("✅ Botas paleistas!")
